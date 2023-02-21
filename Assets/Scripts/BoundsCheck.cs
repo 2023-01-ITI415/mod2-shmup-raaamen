@@ -7,6 +7,8 @@ public class BoundsCheck : MonoBehaviour
     public float camWidth;
     public float camHeight;
     public float radius = -1f;
+    public bool keepOnScreen;
+    bool isOnScreen;
 
     private void Awake() {
         camHeight = Camera.main.orthographicSize;
@@ -41,5 +43,10 @@ public class BoundsCheck : MonoBehaviour
             pos.y = -camHeight-radius;
         }
         transform.position = pos;
+
+        if (keepOnScreen && !isOnScreen)
+        {
+            
+        }
     }
 }
