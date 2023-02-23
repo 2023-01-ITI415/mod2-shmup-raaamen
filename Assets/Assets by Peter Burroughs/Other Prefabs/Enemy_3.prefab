@@ -96,7 +96,7 @@ MonoBehaviour:
   camWidth: 0
   camHeight: 0
   radius: -1
-  keepOnScreen: 0
+  keepOnScreen: 1
   isOnScreen: 0
 --- !u!1001 &6217192625199160741
 PrefabInstance:

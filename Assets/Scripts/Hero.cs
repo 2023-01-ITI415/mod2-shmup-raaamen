@@ -9,7 +9,23 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     [Range(0,4)]
-    public float shieldLevel = 1;
+    private float _shieldLevel = 1;
+    public GameObject bulletPrefab;
+    public float shieldLevel{
+        get{
+            return _shieldLevel;
+        }
+        set{
+            _shieldLevel = Mathf.Min(value, 4);
+            if (value <= 0)
+            {
+                GameManager.HERO_DIED();
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+
 
     private void Awake() {
         if (S == null)
@@ -34,5 +50,24 @@ public class Hero : MonoBehaviour
         transform.position+=pos*speed*Time.deltaTime;
 
         transform.rotation = Quaternion.Euler(y*pitchMult, x*rollMult,0);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            
+        }
     }
+    private void OnTriggerEnter(Collider other) {
+        var temp = other.gameObject;
+        switch (other.gameObject.tag)
+        {
+            case "Enemy":
+                shieldLevel--;
+                Destroy(other.gameObject);
+                break;
+            default:
+                break;
+        }
+    }
+
+    
 }

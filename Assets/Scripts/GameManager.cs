@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public float enemySpawnOffset = 1.5f;
 
     public BoundsCheck boundsCheck;
+
+    public float respawnDelay = 2;
     private void Awake() {
         GM = this;
     }
@@ -20,8 +23,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine("SpawnEnemy");
     }
 
-
-    IEnumerator SpawnEnemy(){
+    public IEnumerator SpawnEnemy(){
         while (spawningEnemies)
         {
             yield return new WaitForSeconds(enemySpawnTimer);
@@ -35,5 +37,14 @@ public class GameManager : MonoBehaviour
             pos.y = boundsCheck.camHeight + enemyInset;
             tempEnemy.transform.position = pos;
         }
+    }
+
+    public IEnumerator RespawnPlayer(){
+        yield return new WaitForSeconds(respawnDelay);
+        SceneManager.LoadScene("__Scene_0");
+
+    }
+    public static void HERO_DIED(){
+        GM.StartCoroutine("RespawnPlayer");
     }
 }
