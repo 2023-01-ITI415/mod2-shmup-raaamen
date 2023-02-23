@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour
     [Range(0,4)]
     private float _shieldLevel = 1;
     public GameObject bulletPrefab;
+    public float bulletSpeed;
     public float shieldLevel{
         get{
             return _shieldLevel;
@@ -51,9 +52,10 @@ public class Hero : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(y*pitchMult, x*rollMult,0);
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);   
+            bullet.gameObject.GetComponent<Rigidbody>().velocity = bulletSpeed*Vector3.forward;
         }
     }
     private void OnTriggerEnter(Collider other) {

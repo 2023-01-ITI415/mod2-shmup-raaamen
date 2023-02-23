@@ -38,4 +38,14 @@ public class Enemy : MonoBehaviour
         tempPos.y -= speed * Time.deltaTime;
         pos = tempPos;
     }
+
+    private void OnCollisionEnter(Collision other) {
+        switch (other.gameObject.tag)
+        {
+            case "bruh":
+                break;
+            default:
+                break;
+        }
+    }
 }
