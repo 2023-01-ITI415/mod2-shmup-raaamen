@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private BoundsCheck boundsCheck;
     public float speed = 10;
     public float fireRate = 0.3f;
     public float health = 10;
@@ -16,9 +17,21 @@ public class Enemy : MonoBehaviour
             this.transform.position = value;
         }
     }
+
+    private void Awake() {
+        boundsCheck = GetComponent<BoundsCheck>();
+    }
+
     void Update()
     {
         Move();
+        if (!boundsCheck.isOnScreen)
+        {
+            if (pos.y < boundsCheck.camHeight - boundsCheck.radius)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
     public virtual void Move(){
         Vector3 tempPos = pos;
