@@ -14,6 +14,7 @@ public class ProjectileHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(boundsCheck.isOnScreen);
         if (!boundsCheck.isOnScreen)
         {
             Destroy(this.gameObject);

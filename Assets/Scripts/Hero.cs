@@ -60,7 +60,6 @@ public class Hero : MonoBehaviour
         }
     }
     private void OnCollisionEnter(Collision other) {
-        var temp = other.gameObject;
         Debug.Log(other.gameObject.name);
         switch (other.gameObject.tag)
         {
@@ -72,6 +71,8 @@ public class Hero : MonoBehaviour
                 break;
         }
     }
+
+    
 
     
 }
