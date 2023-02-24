@@ -8,6 +8,7 @@ public class Hero : MonoBehaviour
     public float speed = 30;
     public float rollMult = -45;
     public float pitchMult = 30;
+    
     [Range(0,4)]
     private float _shieldLevel = 1;
     public GameObject bulletPrefab;
@@ -58,8 +59,9 @@ public class Hero : MonoBehaviour
             bullet.gameObject.GetComponent<Rigidbody>().velocity = bulletSpeed*Vector3.up;
         }
     }
-    private void OnTriggerEnter(Collider other) {
+    private void OnCollisionEnter(Collision other) {
         var temp = other.gameObject;
+        Debug.Log(other.gameObject.name);
         switch (other.gameObject.tag)
         {
             case "Enemy":

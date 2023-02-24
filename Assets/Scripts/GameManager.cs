@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public bool spawningEnemies;
     public List<GameObject> enemyList;
     public float enemySpawnTimer;
-    public float enemySpawnOffset = 1.5f;
+    public float enemySpawnOffset;
 
     public BoundsCheck boundsCheck;
 
@@ -27,14 +27,16 @@ public class GameManager : MonoBehaviour
         while (spawningEnemies)
         {
             yield return new WaitForSeconds(enemySpawnTimer);
+            Debug.Log("enemy spawned");
             var tempEnemy = Instantiate(enemyList[Random.Range(0, enemyList.Count)]);
+            tempEnemy.GetComponent<BoundsCheck>().isOnScreen = true;
             Vector3 pos = Vector3.zero;
 
             float enemyInset = Mathf.Abs(tempEnemy.GetComponent<BoundsCheck>().radius);
             float xMin = -boundsCheck.camWidth + enemyInset;
             float xMax =  boundsCheck.camWidth - enemyInset;
             pos.x = Random.Range( xMin, xMax );
-            pos.y = boundsCheck.camHeight + enemyInset;
+            pos.y = boundsCheck.camHeight - enemySpawnOffset;
             tempEnemy.transform.position = pos;
         }
     }

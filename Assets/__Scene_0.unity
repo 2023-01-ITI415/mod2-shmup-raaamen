@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camWidth: 0
   camHeight: 0
-  radius: -1
+  radius: -40
   keepOnScreen: 0
   isOnScreen: 0
 --- !u!114 &622729779
@@ -285,8 +285,8 @@ MonoBehaviour:
   spawningEnemies: 1
   enemyList:
   - {fileID: 6217192625371338093, guid: 8b3b585cc9dbb43ff97ab0579e85fd71, type: 3}
-  enemySpawnTimer: 20
-  enemySpawnOffset: 1
+  enemySpawnTimer: 1
+  enemySpawnOffset: 5
   boundsCheck: {fileID: 622729778}
   respawnDelay: 3
 --- !u!4 &622729780
@@ -493,9 +493,10 @@ GameObject:
   - component: {fileID: 1686990603}
   - component: {fileID: 1686990605}
   - component: {fileID: 1686990604}
+  - component: {fileID: 1686990606}
   m_Layer: 6
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,9 +549,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camWidth: 0
   camHeight: 0
-  radius: 4
+  radius: -4
   keepOnScreen: 1
   isOnScreen: 0
+--- !u!135 &1686990606
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686990602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1963008787
 PrefabInstance:
   m_ObjectHideFlags: 0

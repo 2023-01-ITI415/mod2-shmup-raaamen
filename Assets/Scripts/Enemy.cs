@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
         {
             if (pos.y < boundsCheck.camHeight - boundsCheck.radius)
             {
+                Debug.Log("enemy destroyed");
                 Destroy(this.gameObject);
             }
         }
