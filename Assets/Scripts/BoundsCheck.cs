@@ -12,40 +12,36 @@ public class BoundsCheck : MonoBehaviour
 
     private void Awake() {
         camHeight = Camera.main.orthographicSize;
-        camWidth = camHeight *Camera.main.aspect;
+        camWidth = camHeight * Camera.main.aspect;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
     private void LateUpdate() {
         Vector3 pos = transform.position;
         isOnScreen=true;
         if (pos.x > camWidth + radius)
         {
+            isOnScreen = false;
             pos.x = camWidth + radius;
         }
         if (pos.x < -camWidth -radius) {
+            isOnScreen = false;
             pos.x = -camWidth-radius;
         }
         if (pos.y > camHeight + radius)
         {
+            isOnScreen = false;
             pos.y = camHeight + radius;
         }
         if (pos.y < -camHeight-radius) {
+            isOnScreen = false;
             pos.y = -camHeight-radius;
         }
 
         if (keepOnScreen && !isOnScreen)
         {
+            Debug.Log("offscreen");
             transform.position = pos; 
             isOnScreen = true;
         }
