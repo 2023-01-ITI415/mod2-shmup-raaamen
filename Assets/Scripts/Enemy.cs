@@ -42,7 +42,9 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         switch (other.gameObject.tag)
         {
-            case "bruh":
+            case "HeroProjectile":
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
                 break;
             default:
                 break;

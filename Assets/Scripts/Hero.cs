@@ -54,8 +54,8 @@ public class Hero : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            var bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);   
-            bullet.gameObject.GetComponent<Rigidbody>().velocity = bulletSpeed*Vector3.forward;
+            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);   
+            bullet.gameObject.GetComponent<Rigidbody>().velocity = bulletSpeed*Vector3.up;
         }
     }
     private void OnTriggerEnter(Collider other) {

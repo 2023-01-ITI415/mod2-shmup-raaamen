@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     static private GameManager GM;
     public bool spawningEnemies;
     public List<GameObject> enemyList;
-    public float enemySpawnTimer = 0.5f;
+    public float enemySpawnTimer;
     public float enemySpawnOffset = 1.5f;
 
     public BoundsCheck boundsCheck;
